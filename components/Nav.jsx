@@ -58,9 +58,26 @@ const Nav = () => {
             </Link>
           </div>
         ):(
-          <></>
+          <>
+            {providers && Object.values(providers).map((provider)=>(
+              <button
+                type='button'
+                key={provider.name}
+                onClick={()=>{signIn(provider.id)}}
+                className='black_btn'
+                >
+                  Sign in
+                </button>
+            ))}
+          </>
         )}
       </div>
+
+      {/**Mobile Navigation */}
+      <div className='sm:hidden flex relative'>
+        {}
+      </div>
+
     </nav>
 
 

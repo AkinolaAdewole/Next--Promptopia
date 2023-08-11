@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import { connectToDB } from '@utils/database';
+import Promptopia from '@models/user';
 
 
 console.log({
@@ -22,8 +23,16 @@ const handler = NextAuth({
         try {
             await connectToDB();
             //check if a user already exist
+            const userExist = await Promptopia.findOne({ email: profile.name});
 
-            // if not, create a new user
+            // if not, create a new user and save user in MongoDB
+            if(!userExist){
+                await Promptopia.create({
+                    email:profile.email,
+                    username: profile.name.replace("","").toLowerCase(),
+                    image:profile.picture,
+                })
+            }
 
             return true;
         } catch (error) {

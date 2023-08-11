@@ -3,7 +3,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import { connectToDB } from '@utils/database';
 import Promptopia from '@models/user';
 
-
+ 
 // console.log({
 //     clientId:process.env.GOOGLE_ID,
 //     clientSecret:process.env.GOOGLE_CLIENT_SECRET,

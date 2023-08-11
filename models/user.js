@@ -9,10 +9,7 @@ const UserSchema = new Schema({
   username: {
     type: String,
     required: [true, 'Username is required!'],
-    match: [
-      /^[A-Za-z]{7}$/,
-      'Username invalid, it should be 7 characters long and contain only alphabetic characters.',
-    ],
+   match: [/^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/, "Username invalid, it should contain 8-20 alphanumeric letters and be unique!"],
   },
   image: {
     type: String, 
@@ -20,5 +17,5 @@ const UserSchema = new Schema({
 });
 
 const Promptopia = models.Promptopia || model("Promptopia", UserSchema);
-
+ 
 export default Promptopia;

@@ -83,7 +83,20 @@ const Nav = () => {
               height={37}
               className='rounded-full'
               alt='profile'
+              onClick={()=>setToggleDropdown((prev)=>!prev)}
           />
+
+          {toggleDropdown && (
+            <div className='dropdown'>
+              <Link
+                href='/profile'
+                className='dropdown_link'
+                onClick={()=>setToggleDropdown(false)}
+                >
+                    My Profile
+                </Link>
+            </div>
+          )}
          </div>
         ):(
          <>

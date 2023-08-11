@@ -8,6 +8,7 @@ import Form from "@components/Form";
 
 const CreatePrompt = () => {
   const router = useRouter();
+  const {data: session} = useSession();
 
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
@@ -32,7 +33,9 @@ const CreatePrompt = () => {
         router.push("/")
       }
     } catch (error) {
-      
+      console.error(error);
+    } finally {
+      setSubmitting(false);
     }
   }            
 

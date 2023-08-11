@@ -1,5 +1,6 @@
 import { Schema, model, models } from 'mongoose';
 
+// Ther is no need to import mongoose since schema has been imported
 const PromptSchema= new SchemaType({
     creator:{
         type:Schema.Types.ObjectId,

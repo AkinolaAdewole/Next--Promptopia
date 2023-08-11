@@ -37,7 +37,7 @@ const Nav = () => {
 
      {/** debugging*/}
      {/* {alert(session?.firstname)} */}
-     {console.log(session)}
+     {/* {console.log(session)} */}
      {/* {console.log(session.firstname)} */}
 
       {/*desktop Navigation */}

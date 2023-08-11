@@ -17,7 +17,11 @@ const handler = NextAuth({
         })
     ],
 
-    async session({ session }){},
+    async session({ session }){
+        // store the user id from MongoDB to session
+        const sessionUser = await Promptopia.findOne({email:session.user.email});
+        session.user.id = sessionUser._id.toString();
+    },
 
     async signIn({ profile }){
         try {
@@ -31,12 +35,13 @@ const handler = NextAuth({
                     email:profile.email,
                     username: profile.name.replace("","").toLowerCase(),
                     image:profile.picture,
-                })
+                });
             }
 
             return true;
         } catch (error) {
-            console.error(error);
+            console.error("user exist:", error.message);
+            return false 
         }
     }
 })

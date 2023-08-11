@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import Form from "@components/Form";
 
 const CreatePrompt = () => {
+  const router = useRouter();
+
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
                             prompt:'',
@@ -24,7 +26,11 @@ const CreatePrompt = () => {
           userId: session?.user.id,
           tag: post.tag
         })
-      })
+      });
+
+      if(response.ok){
+        router.push("/")
+      }
     } catch (error) {
       
     }

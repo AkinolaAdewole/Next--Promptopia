@@ -16,36 +16,39 @@ const handler = NextAuth({
     ],
 
    callbacks:{
-            async session({ session }){
-                // store the user id from MongoDB to session
-                const sessionUser = await Promptopia.findOne({email:session.user.email});
-                session.user.id = sessionUser._id.toString();
-                // to know which user is online
-                return session;
-            },
 
-            async signIn({ profile }){
-                try {
-                    await connectToDB();
-                    //check if a user already exist
-                    const userExist = await Promptopia.findOne({ email: profile.name});
-
-                    // if not, create a new user and save user in MongoDB
-                    if(!userExist){
-                        await Promptopia.create({
-                            email:profile.email,
-                            username: profile.name.replace("","").toLowerCase(),
-                            image:profile.picture,
-                        });
-                    }
-
-                    return true;
-                } catch (error) {
-                    console.error("user exist:", error.message);
-                    return false 
-                }
+    async session({ session }){
+        // store the user id from MongoDB to session
+        const sessionUser = await Promptopia.findOne({email:session.user.email});
+        session.user.id = sessionUser._id.toString();
+        // to know which user is online
+        return session;
+    },
+    
+    async signIn({ profile }){
+        try {
+            await connectToDB();
+            //check if a user already exist
+            const userExist = await Promptopia.findOne({ email: profile.name});
+    
+            // if not, create a new user and save user in MongoDB
+            if(!userExist){
+                await Promptopia.create({
+                    email:profile.email,
+                    username: profile.name.replace("","").toLowerCase(),
+                    image:profile.picture,
+                });
             }
-   }
+    
+            return true;
+        } catch (error) {
+            console.error("user exist:", error.message);
+            return false 
+        }
+    }
+   },
+
+   
 });
 
 export {handler as GET, handler as POST}

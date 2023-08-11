@@ -36,7 +36,9 @@ const Nav = () => {
       </Link>
 
      {/** debugging*/}
-     {/* {alert(session?.user)} */}
+     {/* {alert(session?.firstname)} */}
+     {console.log(session)}
+     {/* {console.log(session.firstname)} */}
 
       {/*desktop Navigation */}
       <div className='sm:flex hidden'>
@@ -63,7 +65,9 @@ const Nav = () => {
           </div>
         ):(
           <>
+          {/* {alert(providers.name)} */}
             {providers && Object.values(providers).map((provider)=>(
+              
               <button
                 type='button'
                 key={provider.name}

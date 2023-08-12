@@ -1,8 +1,12 @@
-import React from 'react'
+"use client"
+import {useState, useEffect} from 'react'
+import PromptCard from './PromptCard';
 
-const Feed = () => {
+const Feed = ({data, handleTagClick}) => {
   return (
-    <div>Feed</div>
+    <section className='feed'>
+      <form className='relative w-full flex-center'></form>
+    </section>
   )
 }
 

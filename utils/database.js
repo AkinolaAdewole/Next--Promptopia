@@ -12,7 +12,7 @@ export const connectToDB = async () => {
 
         try {
             await mongoose.connect(process.env.MongoDB_URI, {
-            dbName: "promptopia",
+            dbName: "Share-prompt",
             useNewUrlParser: true,
             useUnifiedTopology: true,
             })

@@ -29,7 +29,7 @@ const handler = NextAuth({
         try {
             await connectToDB();
             //check if a user already exist
-            const userExist = await Promptopia.findOne({ email: profile.name});
+            const userExist = await Promptopia.findOne({ email: profile.email});
     
             // if not, create a new user and save user in MongoDB
             if(!userExist){
@@ -40,7 +40,7 @@ const handler = NextAuth({
                 });
             }
     
-            return true;
+            return true
         } catch (error) {
             console.error("user exist:", error.message);
             return false 

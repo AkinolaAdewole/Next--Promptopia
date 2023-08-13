@@ -1,0 +1,1 @@
+import Prompt from "@models/prompt";

@@ -30,7 +30,15 @@ export const PATCH = async(request, { params })=>{
         if(!existingPrompt){
             return new Response("Prompt not found", {status : 404});
         }
+
+        // Update the prompt with new data
+        existingPrompt.Prompt = prompt;
+        existingPrompt.tag = tag;
+
+        await existingPrompt.save();
+
+        return new Response("Successfully updated the prompts",{status : 200});
     } catch (error) {
-        
+        return new Response("Error updating prompt", { status : 500});
     }
-}
+};

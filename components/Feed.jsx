@@ -59,7 +59,7 @@ const Feed = () => {
       }, 500)
     );
   };
-
+ 
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
 

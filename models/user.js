@@ -16,6 +16,6 @@ const UserSchema = new Schema({
   }
 });
 
-const Promptopia = models.Promptopia || model("Promptopia", UserSchema);
+const User = models.Promptopia || model("User", UserSchema);
  
-export default Promptopia;
+export default User;

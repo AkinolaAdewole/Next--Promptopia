@@ -32,7 +32,7 @@ export const PATCH = async(request, { params })=>{
         }
 
         // Update the prompt with new data
-        existingPrompt.Prompt = prompt;
+        existingPrompt.prompt = prompt;
         existingPrompt.tag = tag;
 
         await existingPrompt.save();

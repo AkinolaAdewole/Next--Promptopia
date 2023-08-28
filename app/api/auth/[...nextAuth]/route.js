@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
+import Google from 'next-auth/providers/google';
 import { connectToDB } from '@utils/database';
 import User from '@models/user';
 
@@ -7,7 +7,7 @@ import User from '@models/user';
 const handler = NextAuth({
   // Configure Google authentication provider
   providers: [
-    GoogleProvider({
+    Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),

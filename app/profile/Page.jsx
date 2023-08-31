@@ -19,7 +19,7 @@ const MyProfile = () => {
 
             setPosts(data);
         };
-        console.log(posts);
+        // console.log(posts);
 
         if(session?.user.id) fetchPosts();
     },[session?.user.id]);
